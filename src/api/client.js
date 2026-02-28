@@ -28,20 +28,20 @@ async function request(path, options = {}) {
 
 export const api = {
   employees: {
-    list: () => request('/api/employees/'),
-    create: (body) => request('/api/employees/', { method: 'POST', body }),
-    get: (id) => request(`/api/employees/${id}/`),
-    delete: (id) => request(`/api/employees/${id}/`, { method: 'DELETE' }),
+    list: () => request('api/employees/'),
+    create: (body) => request('api/employees/', { method: 'POST', body }),
+    get: (id) => request(`api/employees/${id}/`),
+    delete: (id) => request(`api/employees/${id}/`, { method: 'DELETE' }),
   },
   attendance: {
     list: (params = {}) => {
       const q = new URLSearchParams(params).toString();
-      return request(`/api/attendance/${q ? `?${q}` : ''}`);
+      return request(`api/attendance/${q ? `?${q}` : ''}`);
     },
     listByEmployee: (employeePk, params = {}) => {
       const q = new URLSearchParams(params).toString();
-      return request(`/api/attendance/employee/${employeePk}/${q ? `?${q}` : ''}`);
+      return request(`api/attendance/employee/${employeePk}/${q ? `?${q}` : ''}`);
     },
-    create: (body) => request('/api/attendance/', { method: 'POST', body }),
+    create: (body) => request('api/attendance/', { method: 'POST', body }),
   },
 };
